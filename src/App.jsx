@@ -1,0 +1,21 @@
+import { Routes, Route } from "react-router-dom"
+import './App.css'
+import Home from "./pages/Home.jsx";
+import Auth from "./pages/Auth.jsx";
+import Checkout from "./pages/Checkout.jsx";
+import Navbar from "./components/Navbar.jsx";
+
+function App() {
+  return(
+    <div className='app'>
+      <Navbar/>
+      <Routes>
+      <Route path="/" element={<Home/>}></Route>
+      <Route path="/auth" element={<Auth/>}></Route>
+      <Route path="/checkout" element={<Checkout/>}></Route>
+      </Routes>
+    </div>
+  )
+}
+
+export default App
