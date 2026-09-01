@@ -12,7 +12,8 @@ export default function Navbar(){
             </div>
             <div className="flex justify-between items-center w-[13%] h-[80%]">
                 <Link to="/auth" className="h-[80%] w-[49%] bg-black text-white font-semibold rounded-[0.5vh] transition duration-[0.1s] text-[1.1vw] hover:opacity-[0.8] text-center flex justify-center items-center">Log in</Link>
-                <Link to="/auth" className="h-[80%] w-[49%] text-white font-semibold rounded-[0.5vh] bg-blue-500 transition duration-[0.1s] text-[1.1vw] hover:opacity-[0.9] text-center flex jusitfy-center items-center pl-2.5">Sign up</Link>
+                <Link to="/auth" className="h-[80%] w-[49%] bg-blue-500 text-white font-semibold rounded-[0.5vh] transition duration-[0.1s] text-[1.1vw] hover:opacity-[0.8] text-center flex justify-center items-center">Sign up</Link>
+                
             </div>
             
         </nav>

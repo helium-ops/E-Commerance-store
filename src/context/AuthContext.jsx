@@ -3,47 +3,43 @@ import { createContext, useState } from 'react';
 export const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
-    return storedUsers[0] || null;
-  });
+  const [user, setUser] = useState(localStorage.getItem('currentUserEmail') ? { email: localStorage.getItem('currentUserEmail')} : null);
 
   function signUp(email, password) {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const alreadyExists = users.some(
-      (storedUser) => storedUser.email.toLowerCase() === email.toLowerCase()
-    );
-
-    if (alreadyExists) {
-      return { success: false, message: 'User already exists' };
+    if(users.find(u => u.email === email)){
+      return{success: false, error: "Email already exists"};
     }
-
+    else{
     const newUser = { email, password };
-    const updatedUsers = [...users, newUser];
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-    setUser(newUser);
-
-    return { success: true, message: 'Account created successfully' };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    setUser({email});
+    localStorage.setItem('currentUserEmail', email);  
+    return { success: true, message: `User: ${email}` };
+    }
   }
 
   function login(email, password) {
     const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const currentUser = users.find(
-      (storedUser) =>
-        storedUser.email.toLowerCase() === email.toLowerCase() &&
-        storedUser.password === password
-    );
+    const user = users.find(u => u.email === email && u.password === password);
 
-    if (!currentUser) {
-      return { success: false, message: 'Invalid email or password' };
+    if(!user){
+      return { success: false, error: "Invalid email or password" };
+      setUser(null);
     }
+    setUser({email});
+    localStorage.setItem('currentUserEmail', email);
+    return { success: true };
+  }
 
-    setUser(currentUser);
-    return { success: true, message: 'Logged in successfully' };
+  function logout(){
+    localStorage.removeItem('currentUserEmail', email);
+    setUser(null);
   }
 
   return (
-    <AuthContext.Provider value={{ user, signUp, login }}>
+    <AuthContext.Provider value={{ signUp, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
