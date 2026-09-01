@@ -5,7 +5,7 @@ import ProductCards from '../components/ProductCard.jsx';
 export default function Home(){
     const products = getProducts();
     return(
-        <div className="flex flex-col justify-between items-center gap-[2vh] h-[20%] w-[100%] ">
+        <div className="flex flex-col justify-between items-center gap-[2vh] h-[150%] w-[100%] bg-slate-100 absolute">
             <div className="flex flex-col justify-center items-center gap-[8%] pt-[3%]">
                 <h1 class="font-bold text-[2rem] mb-[2%]">Welcome to Shophub!</h1>
                 <p className="text-[#4B5563]">Discover amazing products at great prices!</p>

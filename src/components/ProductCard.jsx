@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductCards({ product }){
     return(
-                <div className='flex justify-center items-center flex-col gap-2 rounded-[2vh] bg-[#F8FAFC] shadow-sm pb-3 p-2 transition duration-[0.3s] hover:-translate-y-3'>
+                <div className='flex justify-center items-center flex-col gap-2 rounded-[2vh] bg-[#F8FAFC] shadow-sm pb-3 p-2 transition duration-[0.3s] hover:-translate-y-3 border border-slate-200'>
                   <img src={product.image} alt="" className='rounded-[1vh]'/>
                   <div className='flex justify-center items-center flex-col gap-1'>
                     <h3 class="font-semibold text-[1vw] w-[100%]">{product.name}</h3>
