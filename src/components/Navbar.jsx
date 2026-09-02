@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 export default function Navbar(){
+    const { user, logout } = useContext(AuthContext);
     return(
         <nav className="h-[6vh] w-full flex justify-between items-center bg-zinc-50 px-[2.5%]">
             <div>
