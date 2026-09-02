@@ -5,6 +5,7 @@ import Auth from "./pages/Auth.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Home/>}></Route>
       <Route path="/auth" element={<Auth/>}></Route>
       <Route path="/checkout" element={<Checkout/>}></Route>
+      <Route path="/products/:id" element={<ProductDetails/>}></Route>
       </Routes>
     </div>
     </AuthProvider>

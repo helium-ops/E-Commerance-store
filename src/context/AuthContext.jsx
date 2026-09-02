@@ -42,9 +42,18 @@ export default function AuthProvider({ children }) {
     return { success: true, message: 'Logged in successfully' };
   }
 
+  function logout(){
+    setUser(null);
+  }
+
   return (
-    <AuthContext.Provider value={{ user, signUp, login }}>
+    <AuthContext.Provider value={{ user, signUp, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
+}
+
+export function useAuth(){
+  const context = useContext(AuthContext);
+  return context;
 }
