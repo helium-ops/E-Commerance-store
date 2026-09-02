@@ -6,25 +6,27 @@ import { useNavigate } from 'react-router-dom';
 export default function Auth() {
   const navigate = useNavigate();
   const [mode, setMode] = useState('login');
-  const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { signUp, login } = useAuth();
+  const { signUp, login, user } = useAuth();
 
   function onSubmit(data) {
     setError(null);
     let result;
     if (mode === 'signup') {
-      const result = signUp(data.email, data.password);
-      alert(result.message);
+      result = signUp(data.email, data.password);
       return;
     }
 
-    const result = login(data.email, data.password);
+    else{
+      result = login(data.email, data.password);
+    }
+
     if (result.success) {
       navigate('/');
     } else {
@@ -89,7 +91,13 @@ export default function Auth() {
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-slate-900 px-4 py-3 text-base font-semibold text-white transition hover:bg-slate-800"
+            className="w-full rounded-xl bg-slate-900 px-4 py-3 text-base font-semibold text-white transition hover:bg-slate-800" onClick={(e)=>{
+              if(e.target.textContent === "Sign up"){
+                signUp();
+              } else {
+                login();
+              }
+            }}
             
           >
             {mode === 'signup' ? 'Sign up' : 'Log in'}
@@ -117,7 +125,7 @@ export default function Auth() {
                 </span>
               </p>
             )}
-            <button className="" onClick={()=>logout()}>Logout</button>
+            
           </div>
         </form>
       </div>

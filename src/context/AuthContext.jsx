@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { useContext } from "react";
 
 export const AuthContext = createContext(null);
 
@@ -25,26 +26,22 @@ export default function AuthProvider({ children }) {
     const user = users.find(u => u.email === email && u.password === password);
 
     if(!user){
-      return { success: false, error: "Invalid email or password" };
       setUser(null);
+      return { success: false, error: "Invalid email or password" };
+      
     }
+    
     setUser({email});
     localStorage.setItem('currentUserEmail', email);
     return { success: true };
+    
   }
 
   function logout(){
-    localStorage.removeItem('currentUserEmail', email);
+    localStorage.removeItem('currentUserEmail');
     setUser(null);
   }
 
-  function logout(){
-    setUser(null);
-  }
-
-  function logout(){
-    setUser(null);
-  }
 
   return (
     <AuthContext.Provider value={{ user, signUp, login, logout }}>

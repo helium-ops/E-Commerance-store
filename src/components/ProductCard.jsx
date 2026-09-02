@@ -10,7 +10,7 @@ export default function ProductCards({ product }){
                     <p className="font-medium text-[1.3vw] text-blue-500">${product.price}</p>
                   </div>
                   <div className='flex justify-between items-center w-[100%] px-[2%]'>
-                    <Link className="bg-black w-[43%] h-[120%] rounded-[0.5vw] font-bold text-white transition duration-[0.3s] hover:opacity-[0.8] text-center pt-1">View details</Link>
+                    <Link className="bg-black w-[43%] h-[120%] rounded-[0.5vw] font-bold text-white transition duration-[0.3s] hover:opacity-[0.8] text-center pt-1" to={`/products/${product.id}`}>View details</Link>
                     <button className='bg-blue-500 w-[43%] h-[120%] rounded-[0.5vw] font-bold text-white transition duration-[0.3s] hover:opacity-[0.8]'>Add to cart</button>
                   </div>
                 </div>

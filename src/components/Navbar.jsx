@@ -14,7 +14,7 @@ export default function Navbar(){
               <Link to="/checkout" className="nav">Cart</Link>
             </div>
             { user ? ( <div className=" flex justify-around items-center w-[22.5%]   h-[80%]  relative ">
-               <span className="text-sm text-center absolute font-medium mr-40 w-[90%]">Hello, {user.email}</span>
+               <span className="text-sm text-center absolute font-medium mr-15 w-[90%]">Hello, {user.email}</span>
                <button className="h-[80%] w-[29%] ml-60 bg-blue-500 text-white font-semibold rounded-[0.5vh] transition duration-[0.1s] text-[1.1vw] hover:opacity-[0.8] text-center flex justify-center items-center" onClick={logout}>Log out
                </button>
                </div>) : (
