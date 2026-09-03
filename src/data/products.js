@@ -19,7 +19,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Laptop Stand",
+    name: "Mouse",
     price: 49.99,
     image:
       "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop",
@@ -55,7 +55,7 @@ const products = [
   },
   {
     id: 7,
-    name: "Monitor Stand",
+    name: "Phone",
     price: 79.99,
     image:
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=500&fit=crop",

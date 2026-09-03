@@ -3,6 +3,11 @@ import { useCart } from "../context/CartContext"
 export default function Checkout(){
     const { getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal } = useCart();
     const cartItems = getCartItemsWithProducts();
+    const cartTotal = getCartTotal();
+
+    function placeAnOrder(){
+        alert("Thanks for shopping with us!")
+    }
     return(
         <div className="checkout-page flex flex-col items-start">
             <div className="checkout-inner flex flex-col items-start">
@@ -29,7 +34,12 @@ export default function Checkout(){
                             </div>
                         )}
                     </div>
-                    <div></div>
+                    <div>
+                        <h1>Place an order</h1>
+                        <h2>Subtotal: {cartTotal.toFixed(2)}</h2>
+                        <h1>Total: {cartTotal.toFixed(2)}</h1>
+                        <button onClick={()=>placeAnOrder()}>Place order</button>
+                    </div>
                 </div>
             </div>
         </div>
