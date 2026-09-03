@@ -23,8 +23,28 @@ export default function CartProvider({ children }) {
     return cartItems.map((item)=>({...item, product: getProductById(item.id)}))
   }
 
+  function removeFromCart(productId){
+      setCartItems(cartItems.filter(item => item.id !== productId))
+  }
+
+ 
+function updateQuantity(productId, quantity) {
+  if (quantity <= 0) {
+    removeFromCart(productId);
+    return;
+  }
+
+  setCartItems(
+    cartItems.map((item) =>
+      item.id === productId
+        ? { ...item, quantity }
+        : item
+    )
+  );
+}
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts }}>
+    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, updateQuantity, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
