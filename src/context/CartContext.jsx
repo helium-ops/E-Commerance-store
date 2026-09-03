@@ -43,6 +43,10 @@ function updateQuantity(productId, quantity) {
   );
 }
 
+function clearCart() {
+  setCartItems([]);
+}
+
 function getCartTotal(){
    const total = cartItems.reduce((total, item) =>{
     const product = getProductById(item.id);
@@ -51,8 +55,10 @@ function getCartTotal(){
    return total;
 }
 
+
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal }}>
+    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal, clearCart }}>
       {children}
     </CartContext.Provider>
   );

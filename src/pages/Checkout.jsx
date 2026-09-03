@@ -1,11 +1,12 @@
 import { useCart } from "../context/CartContext"
 
 export default function Checkout(){
-    const { getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal } = useCart();
+    const { getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal, clearCart } = useCart();
     const cartItems = getCartItemsWithProducts();
     const cartTotal = getCartTotal();
 
     function placeAnOrder(){
+        clearCart();
         alert("Thanks for shopping with us!")
     }
     return(
@@ -16,7 +17,7 @@ export default function Checkout(){
                     <div>
                         <h2>Order summary</h2>
                         {cartItems.map((item)=>
-                        <div className="cart-item">
+                        <div className="cart-item" key={item.id}>
                             <img src={item.product.image} alt={item.product.name} className="cart-image"/>
                             <div className="cart-content">
                         <div className="cart-name-row">
