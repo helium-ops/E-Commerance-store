@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import { useContext } from "react";
+import { getProductById } from '../data/products.js'
 
 
 export const CartContext = createContext(null);
@@ -18,8 +19,12 @@ export default function CartProvider({ children }) {
     }
   }
 
+  function getCartItemsWithProducts(){
+    return cartItems.map((item)=>({...item, product: getProductById(item.id)}))
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts }}>
       {children}
     </CartContext.Provider>
   );
