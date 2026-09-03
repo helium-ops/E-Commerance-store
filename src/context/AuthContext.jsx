@@ -31,10 +31,11 @@ export default function AuthProvider({ children }) {
       
     }
     
+    else{
     setUser({email});
     localStorage.setItem('currentUserEmail', email);
     return { success: true };
-    
+    }
   }
 
   function logout(){

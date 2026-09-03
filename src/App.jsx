@@ -6,11 +6,13 @@ import Checkout from "./pages/Checkout.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import CartProvider from "./context/CartContext.jsx";
 
 function App() {
   
   return(
     <AuthProvider>
+      <CartProvider>
       <Navbar/>
     <div className='app'>
       <Routes>
@@ -20,6 +22,7 @@ function App() {
       <Route path="/products/:id" element={<ProductDetails/>}></Route>
       </Routes>
     </div>
+    </CartProvider>
     </AuthProvider>
   )
 }
