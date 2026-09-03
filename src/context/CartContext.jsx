@@ -43,8 +43,15 @@ function updateQuantity(productId, quantity) {
   );
 }
 
+function getCartTotal(){
+   const cartTotal = cartItems.reduce((total, item) =>{
+    const product = getElementById(item.id);
+    return total + (product ? product.price * product.quantity : 0)
+   }, 0)
+}
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, updateQuantity, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal }}>
       {children}
     </CartContext.Provider>
   );

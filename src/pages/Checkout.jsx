@@ -1,7 +1,7 @@
 import { useCart } from "../context/CartContext"
 
 export default function Checkout(){
-    const { getCartItemsWithProducts, updateQuantity, removeFromCart } = useCart();
+    const { getCartItemsWithProducts, updateQuantity, removeFromCart, getCartTotal } = useCart();
     const cartItems = getCartItemsWithProducts();
     return(
         <div className="checkout-page flex flex-col items-start">
@@ -23,12 +23,13 @@ export default function Checkout(){
                                 <p>{item.quantity}</p>
                                 <button onClick={()=>updateQuantity(item.id, item.quantity + 1)}>+</button>
                             </div>
-                            <p className="cart-total">${(item.product.price * item.quantity)}</p>
-                            <button className="remove-button">Remove</button>
+                            <p className="cart-total">${(item.product.price * item.quantity).toFixed(2)}</p>
+                            <button className="remove-button"onClick={()=>removeFromCart(item.id)}>Remove</button>
                             </div>
                             </div>
                         )}
                     </div>
+                    <div></div>
                 </div>
             </div>
         </div>
